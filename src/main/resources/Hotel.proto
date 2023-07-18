@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option java_multiple_files =  true;
+
+package org.tokyoalex;
+
+message Hotel {
+  int64 hotel_id = 1;
+  string name = 2;
+  string location = 3;
+  int32 room_count = 4;
+  int32 max_capacity = 5;
+}
+
+message EmptyRequest{}
+
+message AllHotelsAvailabilityResponse {
+  ListOfHotels hotelList = 1;
+}
+
+message CheckAvailabilityRequest {
+  Hotel hotel = 1;
+}
+
+message CheckAvailabilityResponse {
+  int32 availableRooms = 1;
+}
+
+message ReservationRequest {
+  Hotel hotel = 1;
+}
+
+message ReservationResponse {
+  bool result = 1;
+}
+
+message ListOfHotels {
+  repeated Hotel hotels=1;
+}
+
+service RoomReservationService {
+
+  rpc getAllHotelsAvailability(EmptyRequest) returns (AllHotelsAvailabilityResponse);
+
+  rpc checkAvailability(CheckAvailabilityRequest) returns (CheckAvailabilityResponse);
+
+  rpc reserveRoom(ReservationRequest) returns (ReservationResponse);
+
+  rpc cancelRoomReservation(ReservationRequest) returns (ReservationResponse);
+}
