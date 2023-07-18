@@ -8,7 +8,7 @@ Simple gRPC app build with Java (8) with h2 in memory db, no spring
 - this will install dependencies
 - Open with intellij and build, this will generate gRPC proto java classes. 
 Then run main RoomReservationServer (right click on the file in project explorer) followed by
-RoomReservationClient. Output is to the console
+RoomReservationClient. Output is to the console for each app
 
 
 #### Hotel Object
@@ -90,7 +90,8 @@ bool result = 1;
 
 
 #### Miscellaneous
-- Tried using new versions of Java (11, 18) however due to building on m1, dependecies either didnt exist. Tried
-several workarounds but nothing worked.
+- Tried using new versions of Java (11, 18) however due to building on mac m1, dependencies either didnt exist or got build errors 
+with each version of Java. Tried several workarounds but nothing worked so returned to Java 8, which restricted
+other dependency versions.
 - Tried with spring however couldnt get the SpringApplication part running together with the gRPC part
 - Tried using hibernate however possibly due to Java 8 restrictions and not using spring, database connection/ population issues
